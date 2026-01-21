@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_blocks_guarantees",
+  "info": {
+    "displayName": "Guarantee"
+  },
+  "options": {},
+  "attributes": {
+    "badge_text": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "heading_highlight": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "list": {
+      "type": "component",
+      "component": "shared.list",
+      "repeatable": true
+    },
+    "link": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": false
+    },
+    "stats": {
+      "type": "component",
+      "component": "shared.stat-item",
+      "repeatable": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

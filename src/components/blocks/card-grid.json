@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_blocks_card_grids",
+  "info": {
+    "displayName": "Card Grid"
+  },
+  "options": {},
+  "attributes": {
+    "cards": {
+      "type": "component",
+      "component": "shared.card",
+      "repeatable": true
+    },
+    "section_type": {
+      "type": "enumeration",
+      "enum": [
+        "applications",
+        "support",
+        "performance",
+        "power"
+      ]
+    }
+  },
+  "config": {}
+}

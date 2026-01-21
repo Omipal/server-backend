@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_blocks_markdowns",
+  "info": {
+    "displayName": "Markdown"
+  },
+  "options": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "component": "blocks.banner",
+      "repeatable": false
+    },
+    "heading": {
+      "type": "component",
+      "component": "blocks.section-heading",
+      "repeatable": false
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "link": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

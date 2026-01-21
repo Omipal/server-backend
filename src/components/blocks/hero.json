@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_blocks_heroes",
+  "info": {
+    "displayName": "Hero"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "heading_prefix": {
+      "type": "string"
+    },
+    "heading_highlight": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "links": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": true
+    },
+    "stats": {
+      "type": "component",
+      "component": "shared.stat-item",
+      "repeatable": true
+    },
+    "info_card": {
+      "type": "component",
+      "component": "shared.info-card",
+      "repeatable": false
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    }
+  },
+  "config": {}
+}
