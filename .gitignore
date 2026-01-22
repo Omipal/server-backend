@@ -1,3 +1,14 @@
+# Strapi exports
+*.tar.gz
+*.tar.gz.enc
+
+# Strapi uploads
+public/uploads/
+public/uploads_backup_*/
+
+# Generated types
+types/generated/
+
 ############################
 # OS X
 ############################
