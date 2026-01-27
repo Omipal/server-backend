@@ -29,7 +29,8 @@
         "blocks.hero",
         "blocks.guarantee",
         "blocks.card-grid",
-        "blocks.markdown"
+        "blocks.markdown",
+        "blocks.featured-articles"
       ]
     }
   }

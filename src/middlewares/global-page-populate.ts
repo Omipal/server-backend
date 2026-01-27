@@ -1,5 +1,20 @@
+// /**
+//  * `global-page-populate` middleware
+//  */
+
+// import type { Core } from '@strapi/strapi';
+
+// export default (config, { strapi }: { strapi: Core.Strapi }) => {
+//   // Add your own logic here.
+//   return async (ctx, next) => {
+//     strapi.log.info('In global-page-populate middleware.');
+
+//     await next();
+//   };
+// };
+
 /**
- * `landing-page-populate` middleware
+ * `global-page-populate` middleware
  */
 
 import type { Core } from "@strapi/strapi";
@@ -63,6 +78,18 @@ const populate = {
           link: true,
         },
       },
+      "blocks.featured-articles": {
+        populate: {
+          articles: {
+            populate: {
+              featuredImage: {
+                fields: ["url", "alternativeText"],
+              },
+              author: true,
+            },
+          },
+        },
+      },
     },
   },
 };
@@ -70,7 +97,7 @@ const populate = {
 export default (config, { strapi }: { strapi: Core.Strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {
-    strapi.log.info("In landing-page-populate middleware.");
+    strapi.log.info("In page-populate middleware.");
     ctx.query.populate = populate;
 
     await next();

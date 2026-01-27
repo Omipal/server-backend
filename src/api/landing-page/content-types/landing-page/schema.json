@@ -25,7 +25,8 @@
         "blocks.card-grid",
         "blocks.guarantee",
         "blocks.services",
-        "blocks.markdown"
+        "blocks.markdown",
+        "blocks.featured-articles"
       ]
     }
   }

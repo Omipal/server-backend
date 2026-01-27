@@ -25,6 +25,16 @@ export interface BlocksCardGrid extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksFeaturedArticles extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_featured_articles';
+  info: {
+    displayName: 'Featured Articles';
+  };
+  attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+  };
+}
+
 export interface BlocksGuarantee extends Struct.ComponentSchema {
   collectionName: 'components_blocks_guarantees';
   info: {
@@ -218,6 +228,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'blocks.banner': BlocksBanner;
       'blocks.card-grid': BlocksCardGrid;
+      'blocks.featured-articles': BlocksFeaturedArticles;
       'blocks.guarantee': BlocksGuarantee;
       'blocks.hero': BlocksHero;
       'blocks.markdown': BlocksMarkdown;
