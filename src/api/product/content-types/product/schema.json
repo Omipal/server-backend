@@ -7,25 +7,26 @@
     "displayName": "Product"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "products"
     },
-    "title": {
+    "name": {
       "type": "string"
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "name"
     },
-    "image": {
+    "images": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "allowedTypes": [
         "images"
       ]
@@ -36,9 +37,11 @@
     "description": {
       "type": "richtext"
     },
-    "order": {
-      "type": "integer",
-      "default": 1
+    "price": {
+      "type": "decimal"
+    },
+    "offerPrice": {
+      "type": "decimal"
     }
   }
 }

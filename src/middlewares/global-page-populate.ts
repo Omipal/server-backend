@@ -90,6 +90,20 @@ const populate = {
           },
         },
       },
+      "blocks.featured-products": {
+        populate: {
+          products: {
+            populate: {
+              images: {
+                fields: ["url", "alternativeText"],
+              },
+              categories: {
+                fields: ["name", "documentId"],
+              },
+            },
+          },
+        },
+      },
     },
   },
 };

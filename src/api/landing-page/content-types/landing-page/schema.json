@@ -26,7 +26,8 @@
         "blocks.guarantee",
         "blocks.services",
         "blocks.markdown",
-        "blocks.featured-articles"
+        "blocks.featured-articles",
+        "blocks.featured-products"
       ]
     }
   }

@@ -30,7 +30,8 @@
         "blocks.guarantee",
         "blocks.card-grid",
         "blocks.markdown",
-        "blocks.featured-articles"
+        "blocks.featured-articles",
+        "blocks.featured-products"
       ]
     }
   }
