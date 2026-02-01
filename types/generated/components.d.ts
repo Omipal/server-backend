@@ -25,6 +25,20 @@ export interface BlocksCardGrid extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksContentWithImage extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_content_with_images';
+  info: {
+    displayName: 'Content With Image';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.Component<'shared.link', false>;
+    reversed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+  };
+}
+
 export interface BlocksFeaturedArticles extends Struct.ComponentSchema {
   collectionName: 'components_blocks_featured_articles';
   info: {
@@ -127,6 +141,7 @@ export interface LayoutFooter extends Struct.ComponentSchema {
     displayName: 'Footer';
   };
   attributes: {
+    companyitems: Schema.Attribute.Component<'shared.link', true>;
     companyText: Schema.Attribute.String;
     contactLinks: Schema.Attribute.Component<'shared.logo-link', true>;
     copyrighttext: Schema.Attribute.Text;
@@ -134,6 +149,8 @@ export interface LayoutFooter extends Struct.ComponentSchema {
     list: Schema.Attribute.Component<'shared.list', true>;
     logo: Schema.Attribute.Component<'shared.logo-link', false>;
     navitems: Schema.Attribute.Component<'shared.link', true>;
+    newsLinks: Schema.Attribute.Component<'shared.news-item', true>;
+    socialLinks: Schema.Attribute.Component<'shared.logo-link', true>;
   };
 }
 
@@ -222,6 +239,19 @@ export interface SharedLogoLink extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedNewsItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_news_items';
+  info: {
+    displayName: 'News Item';
+  };
+  attributes: {
+    date: Schema.Attribute.Date;
+    href: Schema.Attribute.String;
+    isExternal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedStatItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_stat_items';
   info: {
@@ -238,6 +268,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'blocks.banner': BlocksBanner;
       'blocks.card-grid': BlocksCardGrid;
+      'blocks.content-with-image': BlocksContentWithImage;
       'blocks.featured-articles': BlocksFeaturedArticles;
       'blocks.featured-products': BlocksFeaturedProducts;
       'blocks.guarantee': BlocksGuarantee;
@@ -253,6 +284,7 @@ declare module '@strapi/strapi' {
       'shared.link': SharedLink;
       'shared.list': SharedList;
       'shared.logo-link': SharedLogoLink;
+      'shared.news-item': SharedNewsItem;
       'shared.stat-item': SharedStatItem;
     }
   }

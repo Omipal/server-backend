@@ -18,7 +18,22 @@
       "component": "shared.link",
       "repeatable": true
     },
+    "companyitems": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": true
+    },
+    "newsLinks": {
+      "type": "component",
+      "component": "shared.news-item",
+      "repeatable": true
+    },
     "contactLinks": {
+      "type": "component",
+      "component": "shared.logo-link",
+      "repeatable": true
+    },
+    "socialLinks": {
       "type": "component",
       "component": "shared.logo-link",
       "repeatable": true

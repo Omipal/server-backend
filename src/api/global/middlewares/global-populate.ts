@@ -41,6 +41,8 @@ const populate = {
         },
       },
       navitems: true,
+      companyitems: true,
+      newsLinks: true,
       contactLinks: {
         populate: {
           image: {

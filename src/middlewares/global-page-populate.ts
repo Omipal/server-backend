@@ -34,6 +34,14 @@ const populate = {
           video: true,
         },
       },
+      "blocks.content-with-image": {
+        populate: {
+          link: true,
+          image: {
+            fields: ["url", "alternativeText"],
+          },
+        },
+      },
       "blocks.section-heading": true,
       "blocks.card-grid": {
         populate: {
