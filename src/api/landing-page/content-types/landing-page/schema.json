@@ -28,7 +28,9 @@
         "blocks.markdown",
         "blocks.featured-articles",
         "blocks.featured-products",
-        "blocks.content-with-image"
+        "blocks.content-with-image",
+        "blocks.locations",
+        "blocks.banner"
       ]
     }
   }

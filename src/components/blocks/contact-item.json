@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_contact_items",
+  "info": {
+    "displayName": "contact-item"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Call",
+        "Email",
+        "Fax"
+      ]
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

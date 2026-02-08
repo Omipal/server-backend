@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blocks_locations",
+  "info": {
+    "displayName": "locations"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "showOnMap": {
+      "type": "boolean",
+      "default": true
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::location.location"
+    }
+  },
+  "config": {}
+}

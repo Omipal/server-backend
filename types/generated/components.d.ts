@@ -25,6 +25,45 @@ export interface BlocksCardGrid extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksContactCards extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_contact_cards';
+  info: {
+    displayName: 'contact-cards';
+  };
+  attributes: {
+    contact_cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-card.contact-card'
+    >;
+    sectionSubtitle: Schema.Attribute.String;
+    sectionTitle: Schema.Attribute.String;
+  };
+}
+
+export interface BlocksContactItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_contact_items';
+  info: {
+    displayName: 'contact-item';
+  };
+  attributes: {
+    type: Schema.Attribute.Enumeration<['Call', 'Email', 'Fax']>;
+    value: Schema.Attribute.String;
+  };
+}
+
+export interface BlocksContactSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_contact_sections';
+  info: {
+    displayName: 'contact-section';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    items: Schema.Attribute.Component<'blocks.contact-item', true>;
+    sectionTitle: Schema.Attribute.String;
+    subtitle: Schema.Attribute.String;
+  };
+}
+
 export interface BlocksContentWithImage extends Struct.ComponentSchema {
   collectionName: 'components_blocks_content_with_images';
   info: {
@@ -56,6 +95,17 @@ export interface BlocksFeaturedProducts extends Struct.ComponentSchema {
   };
   attributes: {
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+  };
+}
+
+export interface BlocksFormField extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_form_fields';
+  info: {
+    displayName: 'form-field';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['select', 'text']>;
   };
 }
 
@@ -92,6 +142,19 @@ export interface BlocksHero extends Struct.ComponentSchema {
     sub_heading: Schema.Attribute.String;
     text: Schema.Attribute.String;
     video: Schema.Attribute.Media<'videos'>;
+  };
+}
+
+export interface BlocksLocations extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_locations';
+  info: {
+    displayName: 'locations';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    heading: Schema.Attribute.String;
+    locations: Schema.Attribute.Relation<'oneToMany', 'api::location.location'>;
+    showOnMap: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -268,11 +331,16 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'blocks.banner': BlocksBanner;
       'blocks.card-grid': BlocksCardGrid;
+      'blocks.contact-cards': BlocksContactCards;
+      'blocks.contact-item': BlocksContactItem;
+      'blocks.contact-section': BlocksContactSection;
       'blocks.content-with-image': BlocksContentWithImage;
       'blocks.featured-articles': BlocksFeaturedArticles;
       'blocks.featured-products': BlocksFeaturedProducts;
+      'blocks.form-field': BlocksFormField;
       'blocks.guarantee': BlocksGuarantee;
       'blocks.hero': BlocksHero;
+      'blocks.locations': BlocksLocations;
       'blocks.markdown': BlocksMarkdown;
       'blocks.section-heading': BlocksSectionHeading;
       'blocks.services': BlocksServices;

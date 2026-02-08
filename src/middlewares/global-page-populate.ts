@@ -1,23 +1,9 @@
-// /**
-//  * `global-page-populate` middleware
-//  */
-
-// import type { Core } from '@strapi/strapi';
-
-// export default (config, { strapi }: { strapi: Core.Strapi }) => {
-//   // Add your own logic here.
-//   return async (ctx, next) => {
-//     strapi.log.info('In global-page-populate middleware.');
-
-//     await next();
-//   };
-// };
-
 /**
  * `global-page-populate` middleware
  */
 
 import type { Core } from "@strapi/strapi";
+import { link } from "fs";
 
 const populate = {
   blocks: {
@@ -86,6 +72,14 @@ const populate = {
           link: true,
         },
       },
+      "blocks.banner": {
+        populate: {
+          image: {
+            fields: ["url", "alternativeText"],
+          },
+          video: true,
+        },
+      },
       "blocks.featured-articles": {
         populate: {
           articles: {
@@ -94,6 +88,7 @@ const populate = {
                 fields: ["url", "alternativeText"],
               },
               author: true,
+              contentTags: true,
             },
           },
         },
@@ -106,8 +101,22 @@ const populate = {
                 fields: ["url", "alternativeText"],
               },
               categories: {
-                fields: ["name", "documentId"],
+                fields: ["name", "slug", "documentId"],
               },
+            },
+          },
+        },
+      },
+      "blocks.locations": {
+        populate: {
+          locations: {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+            },
+            filters: {
+              isActive: true,
             },
           },
         },
@@ -119,7 +128,7 @@ const populate = {
 export default (config, { strapi }: { strapi: Core.Strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {
-    strapi.log.info("In page-populate middleware.");
+    strapi.log.info("In global-page-populate middleware.");
     ctx.query.populate = populate;
 
     await next();

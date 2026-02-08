@@ -534,6 +534,41 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiContactCardContactCard extends Struct.CollectionTypeSchema {
+  collectionName: 'contact_cards';
+  info: {
+    displayName: 'Contact Card';
+    pluralName: 'contact-cards';
+    singularName: 'contact-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    actionLabel: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    formFields: Schema.Attribute.Component<'blocks.form-field', true>;
+    icon: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-card.contact-card'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.Component<'blocks.contact-section', true>;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['form', 'list']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -594,6 +629,8 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
         'blocks.featured-articles',
         'blocks.featured-products',
         'blocks.content-with-image',
+        'blocks.locations',
+        'blocks.banner',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -611,6 +648,62 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
+  collectionName: 'locations';
+  info: {
+    displayName: 'Location';
+    pluralName: 'locations';
+    singularName: 'location';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    addressLine: Schema.Attribute.String;
+    city: Schema.Attribute.String;
+    country: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images'>;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    latitude: Schema.Attribute.Decimal &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 90;
+          min: -90;
+        },
+        number
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::location.location'
+    > &
+      Schema.Attribute.Private;
+    longitude: Schema.Attribute.Decimal &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 180;
+          min: -180;
+        },
+        number
+      >;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    state: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<
+      ['Corporate', 'Distribution', 'Manufacturing']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    zip: Schema.Attribute.String;
   };
 }
 
@@ -635,6 +728,10 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.markdown',
         'blocks.featured-articles',
         'blocks.featured-products',
+        'blocks.content-with-image',
+        'blocks.locations',
+        'blocks.banner',
+        'blocks.contact-cards',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -1230,8 +1327,10 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::contact-card.contact-card': ApiContactCardContactCard;
       'api::global.global': ApiGlobalGlobal;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
+      'api::location.location': ApiLocationLocation;
       'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
       'api::tag.tag': ApiTagTag;
