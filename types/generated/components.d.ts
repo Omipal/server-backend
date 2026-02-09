@@ -25,42 +25,15 @@ export interface BlocksCardGrid extends Struct.ComponentSchema {
   };
 }
 
-export interface BlocksContactCards extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_contact_cards';
+export interface BlocksContact extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_contacts';
   info: {
-    displayName: 'contact-cards';
+    displayName: 'Contact';
   };
   attributes: {
-    contact_cards: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::contact-card.contact-card'
-    >;
-    sectionSubtitle: Schema.Attribute.String;
-    sectionTitle: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksContactItem extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_contact_items';
-  info: {
-    displayName: 'contact-item';
-  };
-  attributes: {
-    type: Schema.Attribute.Enumeration<['Call', 'Email', 'Fax']>;
-    value: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksContactSection extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_contact_sections';
-  info: {
-    displayName: 'contact-section';
-  };
-  attributes: {
+    cards: Schema.Attribute.Component<'contact.cards', true>;
     description: Schema.Attribute.Text;
-    items: Schema.Attribute.Component<'blocks.contact-item', true>;
-    sectionTitle: Schema.Attribute.String;
-    subtitle: Schema.Attribute.String;
+    heading: Schema.Attribute.String;
   };
 }
 
@@ -95,17 +68,6 @@ export interface BlocksFeaturedProducts extends Struct.ComponentSchema {
   };
   attributes: {
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
-  };
-}
-
-export interface BlocksFormField extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_form_fields';
-  info: {
-    displayName: 'form-field';
-  };
-  attributes: {
-    label: Schema.Attribute.String;
-    type: Schema.Attribute.Enumeration<['select', 'text']>;
   };
 }
 
@@ -195,6 +157,52 @@ export interface BlocksServices extends Struct.ComponentSchema {
     link: Schema.Attribute.Component<'shared.link', false>;
     sub_heading: Schema.Attribute.String;
     text: Schema.Attribute.RichText;
+  };
+}
+
+export interface ContactCards extends Struct.ComponentSchema {
+  collectionName: 'components_contact_cards';
+  info: {
+    displayName: 'Cards';
+  };
+  attributes: {
+    actionLabel: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    sections: Schema.Attribute.Component<'contact.sections', true>;
+    showForm: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<
+      [
+        'FIND_REPRESENTATIVE',
+        'CONTACT_CUSTOMER_SERVICE',
+        'CONTACT_TECHNICAL_SERVICES',
+        'CONTACT_SPEC_ENGINEER',
+      ]
+    >;
+  };
+}
+
+export interface ContactItem extends Struct.ComponentSchema {
+  collectionName: 'components_contact_items';
+  info: {
+    displayName: 'Item';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['Call', 'Email', 'Fax']>;
+    value: Schema.Attribute.String;
+  };
+}
+
+export interface ContactSections extends Struct.ComponentSchema {
+  collectionName: 'components_contact_sections';
+  info: {
+    displayName: 'sections';
+  };
+  attributes: {
+    description: Schema.Attribute.String;
+    items: Schema.Attribute.Component<'contact.item', true>;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -331,19 +339,19 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'blocks.banner': BlocksBanner;
       'blocks.card-grid': BlocksCardGrid;
-      'blocks.contact-cards': BlocksContactCards;
-      'blocks.contact-item': BlocksContactItem;
-      'blocks.contact-section': BlocksContactSection;
+      'blocks.contact': BlocksContact;
       'blocks.content-with-image': BlocksContentWithImage;
       'blocks.featured-articles': BlocksFeaturedArticles;
       'blocks.featured-products': BlocksFeaturedProducts;
-      'blocks.form-field': BlocksFormField;
       'blocks.guarantee': BlocksGuarantee;
       'blocks.hero': BlocksHero;
       'blocks.locations': BlocksLocations;
       'blocks.markdown': BlocksMarkdown;
       'blocks.section-heading': BlocksSectionHeading;
       'blocks.services': BlocksServices;
+      'contact.cards': ContactCards;
+      'contact.item': ContactItem;
+      'contact.sections': ContactSections;
       'layout.footer': LayoutFooter;
       'layout.header': LayoutHeader;
       'layout.top-nav': LayoutTopNav;

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_contact_sections",
+  "info": {
+    "displayName": "sections"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "contact.item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

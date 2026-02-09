@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_contact_cards",
+  "info": {
+    "displayName": "Cards"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "FIND_REPRESENTATIVE",
+        "CONTACT_CUSTOMER_SERVICE",
+        "CONTACT_TECHNICAL_SERVICES",
+        "CONTACT_SPEC_ENGINEER"
+      ]
+    },
+    "showForm": {
+      "type": "boolean",
+      "default": false
+    },
+    "actionLabel": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "component",
+      "component": "contact.sections",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

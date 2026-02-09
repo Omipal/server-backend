@@ -107,6 +107,7 @@ const populate = {
           },
         },
       },
+
       "blocks.locations": {
         populate: {
           locations: {
@@ -117,6 +118,19 @@ const populate = {
             },
             filters: {
               isActive: true,
+            },
+          },
+        },
+      },
+      "blocks.contact": {
+        populate: {
+          cards: {
+            populate: {
+              sections: {
+                populate: {
+                  items: true,
+                },
+              },
             },
           },
         },

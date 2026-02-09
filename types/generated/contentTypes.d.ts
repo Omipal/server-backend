@@ -541,40 +541,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContactCardContactCard extends Struct.CollectionTypeSchema {
-  collectionName: 'contact_cards';
-  info: {
-    displayName: 'Contact Card';
-    pluralName: 'contact-cards';
-    singularName: 'contact-card';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    actionLabel: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    formFields: Schema.Attribute.Component<'blocks.form-field', true>;
-    icon: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::contact-card.contact-card'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    sections: Schema.Attribute.Component<'blocks.contact-section', true>;
-    title: Schema.Attribute.String;
-    type: Schema.Attribute.Enumeration<['form', 'list']>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -731,7 +697,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.content-with-image',
         'blocks.locations',
         'blocks.banner',
-        'blocks.contact-cards',
+        'blocks.contact',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -1327,7 +1293,6 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
-      'api::contact-card.contact-card': ApiContactCardContactCard;
       'api::global.global': ApiGlobalGlobal;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::location.location': ApiLocationLocation;
