@@ -43,6 +43,13 @@ const populate = {
       navitems: true,
       companyitems: true,
       newsLinks: true,
+      socialLinks: {
+        populate: {
+          image: {
+            fields: ["alternativeText", "url"],
+          },
+        },
+      },
       contactLinks: {
         populate: {
           image: {

@@ -3,7 +3,6 @@
  */
 
 import type { Core } from "@strapi/strapi";
-import { link } from "fs";
 
 const populate = {
   blocks: {

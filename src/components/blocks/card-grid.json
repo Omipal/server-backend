@@ -14,7 +14,7 @@
       "type": "enumeration",
       "enum": [
         "applications",
-        "support",
+        "strengthSupport",
         "performance",
         "power"
       ]
