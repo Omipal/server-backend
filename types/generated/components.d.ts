@@ -19,6 +19,7 @@ export interface BlocksCardGrid extends Struct.ComponentSchema {
   };
   attributes: {
     cards: Schema.Attribute.Component<'shared.card', true>;
+    link: Schema.Attribute.Component<'shared.link', false>;
     section_type: Schema.Attribute.Enumeration<
       ['applications', 'strengthSupport', 'performance', 'power']
     >;

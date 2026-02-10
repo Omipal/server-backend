@@ -3,6 +3,7 @@
  */
 
 import type { Core } from "@strapi/strapi";
+import { link } from "fs";
 
 const populate = {
   blocks: {
@@ -37,6 +38,7 @@ const populate = {
               },
             },
           },
+          link: true,
         },
       },
       "blocks.guarantee": {

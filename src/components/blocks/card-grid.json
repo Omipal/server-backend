@@ -18,6 +18,11 @@
         "performance",
         "power"
       ]
+    },
+    "link": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": false
     }
   },
   "config": {}
